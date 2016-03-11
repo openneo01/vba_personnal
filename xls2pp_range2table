@@ -1,0 +1,57 @@
+Sub Export_xls2pp()
+'
+'=======================================================================================
+' Procedure : Export_xls2pp (Sub)
+' Module    : Module1 (Module)
+' Project   : VBAProject
+' Author    : yann LE DIRACH
+' Date      : 11/03/2016
+' Comments  : eXPORT XLS RANGE INTO POWERPOINT TABLE
+'               ADD REFERENCE TO POPERPOINT LIBRARY (EARLY BINDING)
+' Unit Test : () 11/03/2016 10:11 | Description [OK]
+' Arg./i    :
+'           - [NO PARAM]
+'           -
+'           -
+' Arg./o    : ()
+'
+'Changes--------------------------------------------------------------------------------
+'Date               Programmer                      Change
+'11/03/2016         yann LE DIRACH               Initiate
+'
+'=======================================================================================
+'
+Dim opp As PowerPoint.Application
+Dim oppp As PowerPoint.Presentation
+Dim oppps As PowerPoint.Slide
+Dim opps_s As PowerPoint.Shape
+Dim opps_t As Table
+Dim orng As Range
+
+'Note : current xls range
+Set orng = ActiveSheet.Range("A1:C6")
+
+'Note : add powerpoint doc
+Set opp = CreateObject("Powerpoint.Application")
+Set oppp = opp.Presentations.Add
+
+With oppp
+    'Note : add slide
+    Set oppps = .Slides.Add(1, ppLayoutBlank)
+    With oppps
+        'Note : add slide > set to table > dim table with xls range settings
+        Set opps_s = .Shapes.AddTable(orng.Rows.Count, orng.Columns.Count)
+        Set opps_t = opps_s.Table
+        'Note : loop throught rng and populate powerpoint table
+        
+        For i = 1 To orng.Rows.Count
+            For j = 1 To orng.Columns.Count
+                opps_t.Cell(i, j).Shape.TextFrame.TextRange.Text = orng.Cells(i, j).Value
+                
+            Next j
+        Next i
+        
+    End With
+End With
+
+End Sub
