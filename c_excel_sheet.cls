@@ -89,7 +89,7 @@ Set Worksheet = workbook_target.Sheets(worksheet_name)
 
 With cllistobject
     For Each oList In Worksheet.ListObjects
-        Set .listobject = oList: .delete
+        Set .listobject = oList: .delete_
     Next
     
 End With
