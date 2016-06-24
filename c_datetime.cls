@@ -2,7 +2,7 @@
 '///////////////////////////////////////////////////////////////////////////////////////
 ' Module    : c_datetime (Module de classe)
 ' Project   : VBAProject
-' Author    : GRT / GAZ
+' Author    : misterneo
 ' Date      : 24/06/2016
 ' Purpose   : datetime functions
 '
