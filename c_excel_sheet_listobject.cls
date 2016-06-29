@@ -291,7 +291,6 @@ Public Function create(oWorksheet As Worksheet, ByVal sName As String, oCell() A
 
 Err_Exit:
 170       Set myCell = Nothing
-180       Set listobject = Nothing
 190       Exit Function
 
 Err_Handler:
